@@ -2,7 +2,7 @@
 
 Open, reproducible code for the paper:
 
-> Tozal, Y. *From Recurring Repairs to Durable Renewal: Using Open Service-Request Data to Identify Chronically Failing Streets and Target Resurfacing.* Submitted to the ASCE *Journal of Infrastructure Systems*. Preprint: [link to be added].
+> Tozal, Y. E. *From Recurring Repairs to Durable Renewal: Using Open Service-Request Data to Identify Chronically Failing Streets and Target Resurfacing.* Submitted to the ASCE *Journal of Infrastructure Systems*. Preprint: [link to be added].
 
 Cities patch the same streets year after year. This workflow uses public pothole service requests (311) to:
 
