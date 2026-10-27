@@ -1,4 +1,5 @@
 # Recurring Repairs to Durable Renewal (rrdr)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23696860.svg)](https://doi.org/10.5281/zenodo.23696860)
 
 Open, reproducible code for the paper:
 
@@ -59,7 +60,7 @@ All inputs are public: City of Chicago Data Portal datasets 7as2-ds3y, v6vf-nfxy
 
 ## Citation
 
-If you use this code, please cite the paper and the archived software release (see `CITATION.cff`; DOI: [Zenodo DOI to be added]).
+If you use this code, please cite the paper and the archived software release (see `CITATION.cff`; DOI: [10.5281/zenodo.23696860](https://doi.org/10.5281/zenodo.23696860)
 
 ## License
 
