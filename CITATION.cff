@@ -2,13 +2,13 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it and the accompanying paper."
 title: "rrdr: Recurring Repairs to Durable Renewal"
 version: 1.0.0
-date-released: 2026-11-01
+date-released: 2026-10-27
 license: MIT
 repository-code: "https://github.com/yunustozal/rrdr"
 authors:
   - family-names: Tozal
-    given-names: Yunus
-    # orcid: "https://orcid.org/0000-0000-0000-0000"
+    given-names: Yunus Emre
+    orcid: "https://orcid.org/0009-0000-5808-0726"
 keywords:
   - pavement management
   - potholes
@@ -20,6 +20,7 @@ preferred-citation:
   title: "From Recurring Repairs to Durable Renewal: Using Open Service-Request Data to Identify Chronically Failing Streets and Target Resurfacing"
   authors:
     - family-names: Tozal
-      given-names: Yunus
+      given-names: Yunus Emre
+      orcid: "https://orcid.org/0009-0000-5808-0726"
   journal: "Journal of Infrastructure Systems (submitted)"
   year: 2026
