@@ -1,0 +1,8 @@
+{
+  "title": "rrdr: Recurring Repairs to Durable Renewal",
+  "description": "Open, reproducible workflow that uses public pothole service requests to identify street segments where patching keeps failing, tests whether renewal ends the pattern, and ranks unrenewed segments by the patch cost at which resurfacing pays for itself. Includes the Chicago (2011-2025) case study.",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [{"name": "Tozal, Yunus"}],
+  "keywords": ["pavement management", "potholes", "311 service requests", "resurfacing", "asset management", "difference-in-differences"]
+}
