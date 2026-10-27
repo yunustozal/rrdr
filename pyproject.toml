@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rrdr"
+version = "1.0.0"
+description = "Recurring Repairs to Durable Renewal: screen chronically failing streets from open 311 data"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Yunus Tozal"}]
+requires-python = ">=3.10"
+
+[project.scripts]
+rrdr = "rrdr.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

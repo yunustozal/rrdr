@@ -1,0 +1,81 @@
+# Configuration for the Chicago case study.
+# Copy this file to configs/<your_city>.yaml and edit it to run the method on another city.
+# All paths are relative to the repository root.
+
+city: Chicago
+crs: EPSG:3435            # projected CRS in feet (Illinois State Plane East)
+data_dir: data/chicago
+output_dir: outputs/chicago
+
+# ---------------------------------------------------------------- inputs
+# Each request series becomes one "period". Period 1 defines chronic segments;
+# period 2 validates them and is used for the renewal analysis.
+requests:
+  period1:
+    file: 311_potholes_historical.csv          # Chicago Data Portal 7as2-ds3y
+    years: [2011, 2018]
+    columns: {date: "CREATION DATE", lat: LATITUDE, lon: LONGITUDE, address: "STREET ADDRESS",
+              status: STATUS, filled: "NUMBER OF POTHOLES FILLED ON BLOCK"}
+    keep_status: [Completed]                   # drops duplicates and open requests
+    street_name_from: address                  # parse the street name from the address text
+  period2:
+    file: 311_potholes_current.csv             # Chicago Data Portal v6vf-nfxy, filtered to potholes
+    years: [2019, 2025]
+    columns: {date: created_date, lat: latitude, lon: longitude, street_name: street_name,
+              type: sr_type, status: status, duplicate: duplicate}
+    keep_types: ["Pothole in Street Complaint"]
+    drop_status: [Canceled]
+    drop_duplicates: true
+
+centerlines:
+  file: centerlines/cl.shp                     # Chicago Data Portal pr57-gg9e (shapefile export)
+  columns: {street_name: street_nam, prefix: pre_dir, class: class, length_ft: length,
+            address_fields: [logiclf, logicrf, logiclt, logicrt]}
+  classes_all_roads: ["1", "2", "3", "4"]      # 1 expressway, 2 arterial, 3 collector, 4 other streets
+  classes_analysis: ["2", "3", "4"]
+  min_length_m: 50
+
+renewals:                                      # optional but needed for the renewal analysis
+  file: moratoriums.csv                        # Chicago Data Portal ndbz-vy4e
+  columns: {date: start_date, type: moratorium_type, street_name: street_name,
+            prefix: street_address_prefix, addr_from: street_address_begin, addr_to: street_address_end}
+  keep_types: ["Street Resurfacing", "Street Construction"]
+
+openings:                                      # optional: permits for openings in the public way
+  file: openings.csv                           # Chicago Data Portal pubx-yq2d, worktype GenOpening
+  years: [2013, 2025]
+  columns: {date: applicationstartdate, lat: latitude, lon: longitude, street_name: streetname}
+
+transit_routes:                                # optional: heavy-vehicle proxy
+  file: cta_bus_routes.geojson                 # Chicago Data Portal 6uva-a5ei
+  buffer_ft: 40
+  min_share: 0.6
+
+terrain:                                       # optional: LiDAR screen
+  enabled: true
+  dem_tiles: lidar/*.tif                       # bare-earth DTM tiles in the project CRS
+  hydrology_cell_factor: 2                     # aggregate cells for flow routing (memory)
+  pavement_buffer_ft: 25
+  neighbourhood_window_ft: 1000
+soils:
+  file: soil/ssurgo.gpkg                       # optional: SSURGO map units with drclassdcd
+  poor_classes: ["Poorly drained", "Very poorly drained", "Somewhat poorly drained"]
+
+# ---------------------------------------------------------------- method
+matching:
+  max_distance_ft: 200                         # request -> centerline with the same street name
+chronic:
+  min_years: 7                                 # years with >= 1 request in period 1
+  robustness_thresholds: [6, 8]
+renewal_effect:
+  event_years: [2020, 2022]                    # first renewal in this window
+  clean_window: [2016, 2025]                   # no other renewal in this window
+  never_renewed_window: [2017, 2025]
+  not_yet_treated: {treated: [2020, 2021], controls: [2024, 2025], years: [2019, 2023]}
+  historical_replication: {events: [2014, 2016], chronic_years: [2011, 2013], window: [2010, 2018]}
+
+breakeven:
+  resurfacing_cost_per_block: 54450            # USD, CDOT/OBM Neighborhood Infrastructure Menu
+  block_length_m: 201.2                        # 660 ft
+  scenarios: [[10, 0.03], [15, 0.03], [10, 0.07]]   # [horizon years, discount rate]
+  patch_costs: [100, 150, 250]
