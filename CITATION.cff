@@ -4,7 +4,7 @@ title: "rrdr: Recurring Repairs to Durable Renewal"
 version: 1.0.0
 date-released: 2026-11-01
 license: MIT
-repository-code: "https://github.com/<your-account>/rrdr"
+repository-code: "https://github.com/yunustozal/rrdr"
 authors:
   - family-names: Tozal
     given-names: Yunus

@@ -13,10 +13,12 @@ Cities patch the same streets year after year. This workflow uses public pothole
 
 The Chicago case study (2011–2025) reproduces every table and figure in the paper.
 
+*This is independent research conducted on personal time with public data. It was not commissioned or endorsed by the author's employer.*
+
 ## Quick start (Chicago)
 
 ```bash
-git clone https://github.com/<your-account>/rrdr.git
+git clone https://github.com/yunustozal/rrdr.git
 cd rrdr
 python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
