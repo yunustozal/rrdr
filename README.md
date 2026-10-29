@@ -1,5 +1,6 @@
 # Recurring Repairs to Durable Renewal (rrdr)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23696860.svg)](https://doi.org/10.5281/zenodo.23696860)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23696859.svg)](https://doi.org/10.5281/zenodo.23696859)
 
 Open, reproducible code for the paper:
 
@@ -12,7 +13,7 @@ Cities patch the same streets year after year. This workflow uses public pothole
 3. **test whether renewal ends the pattern**: an event study and difference-in-differences models comparing renewed segments with segments renewed later;
 4. **rank unrenewed chronic segments for renewal**: the cost per pothole above which resurfacing pays for itself on agency costs alone.
 
-The Chicago case study (2011–2025) reproduces every table and figure in the paper.
+The Chicago case study (2011–2025) reproduces every table and figure in the paper. A five-city study (Chicago, New York, Boston, Minneapolis, Pittsburgh) that applies the same rules in each city is in [`studies/five_cities`](studies/five_cities).
 
 *This is independent research conducted on personal time with public data. It was not commissioned or endorsed by the author's employer.*
 
@@ -60,7 +61,7 @@ All inputs are public: City of Chicago Data Portal datasets 7as2-ds3y, v6vf-nfxy
 
 ## Citation
 
-If you use this code, please cite the paper and the archived software release (see `CITATION.cff`; DOI: [10.5281/zenodo.23696860](https://doi.org/10.5281/zenodo.23696860)
+If you use this code, please cite the paper and the archived software release (see `CITATION.cff`; DOI: [10.5281/zenodo.23696859](https://doi.org/10.5281/zenodo.23696859)).
 
 ## License
 
