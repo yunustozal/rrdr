@@ -5,3 +5,4 @@ __pycache__/
 *.egg-info/
 .venv/
 .DS_Store
+studies/five_cities/out/
